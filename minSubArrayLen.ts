@@ -1,3 +1,4 @@
+// sliding window pattern
 function minSubArrayLen(arr: number[], value: number): number {
     let i = 0
     let j = 0

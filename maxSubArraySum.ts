@@ -1,3 +1,4 @@
+// sliding window pattern
 function maxSubArraySum(arr: number[], subArrayLength: number): number | null {
     if(subArrayLength > arr.length) return null
 
