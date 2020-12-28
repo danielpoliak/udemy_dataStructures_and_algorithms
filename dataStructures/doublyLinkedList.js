@@ -2,7 +2,7 @@ class Node{
     constructor(val){
         this.val = val;
         this.next = null;
-        this.pred = null
+        this.prev = null
     }
 }
 
@@ -121,6 +121,19 @@ class DoublyLinkedList{
 
         this.length++
         return true
+    }
+    remove(index) {
+        if(index < 0 || index > this.length) return false
+        if(index === 0) return this.shift()
+        if(index === this.length - 1) return this.pop()
+
+        const itemToBeRemoved = this.get(index)
+        const prevItem = itemToBeRemoved.prev
+        const nextItem = itemToBeRemoved.next
+        prevItem.next = nextItem
+        nextItem.prev = prevItem
+
+        return itemToBeRemoved
     }
 }
 
