@@ -64,7 +64,6 @@ class DoublyLinkedList{
         if(!this.length) {
             this.head = newHead
             this.tail = newHead
-            return newHead
         } else {
             this.head.prev = newHead
             newHead.next = this.head
@@ -72,7 +71,7 @@ class DoublyLinkedList{
         }
 
         this.length++
-        return newHead
+        return this
     }
     get(index) {
         let currentItem = null
