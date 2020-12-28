@@ -74,13 +74,13 @@ class DoublyLinkedList{
         this.length++
         return newHead
     }
-    get(index){
-        if(index < 0 || index >= this.length) return undefined
-        if(index === 0 ) return this.head
-
+    get(index) {
         let currentItem = null
 
-        if(index < this.length / 2) {
+        if(index < 0 || index >= this.length) return currentItem
+        if(index === 0 ) return this.head
+
+        if(index <= this.length / 2) {
             currentItem = this.head
 
             for(let i = 1; i === index; i++) {
@@ -95,6 +95,32 @@ class DoublyLinkedList{
         }
 
         return currentItem
+    }
+    set(index, val) {
+        let currentIndexNode = this.get(index)
+        if(currentIndexNode) {
+            currentIndexNode.val = val
+            return true
+        }
+
+        return false
+    }
+    insert(index, val) {
+        if(index < 0 || index > this.length) return false
+        if(index === 0)  return !!this.unshift(val)
+        if(index ===  this.length) return !!this.push(val)
+
+        const newNode = new Node(val)
+        const prevNode = this.get(index - 1)
+        const nextNode = prevNode.next
+
+        prevNode.next = newNode
+        newNode.prev = prevNode
+        newNode.next = nextNode
+        nextNode.prev = newNode
+
+        this.length++
+        return true
     }
 }
 
