@@ -82,13 +82,13 @@ class DoublyLinkedList{
         if(index <= this.length / 2) {
             currentItem = this.head
 
-            for(let i = 1; i === index; i++) {
+            for(let i = 1; i <= index; i++) {
                 currentItem = currentItem.next
             }
         } else {
             currentItem = this.tail
 
-            for(let i = this.length - 2; i === index; i--) {
+            for(let i = this.length - 2; i >= index; i--) {
                 currentItem = currentItem.prev
             }
         }
