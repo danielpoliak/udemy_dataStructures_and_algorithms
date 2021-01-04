@@ -140,6 +140,19 @@ class DoublyLinkedList{
         this.length--
         return itemToBeRemoved
     }
-}
+    reverse() {
+        let currentNode = this.head
+        this.head = this.tail
 
+        //
+        for(let i = 0; i < this.length; i++) {
+            currentNode = currentNode.next
+            currentNode.prev = currentNodeTemp.next
+            currentNode.next = currentNodeTemp.prev
+        }
+    }
+}
+    c 
+1 => 2 => 3 =>
+  <=   <=   <=
 const list = new DoublyLinkedList()
