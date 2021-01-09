@@ -12,7 +12,7 @@ class Queue {
         this.size = 0;
     }
     enqueue(val){
-        var newNode = new Node(val);
+        const newNode = new Node(val);
         if(!this.first){
             this.first = newNode;
             this.last = newNode;
@@ -26,7 +26,7 @@ class Queue {
     dequeue(){
         if(!this.first) return null;
 
-        var temp = this.first;
+        const temp = this.first;
         if(this.first === this.last) {
             this.last = null;
         }
