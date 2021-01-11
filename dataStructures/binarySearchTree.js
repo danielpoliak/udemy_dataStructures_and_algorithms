@@ -10,6 +10,7 @@ class BinarySearchTree {
     constructor(){
         this.root = null;
     }
+
     insert(value){a
         const newNode = new Node(value);
         if(this.root === null){
@@ -34,6 +35,7 @@ class BinarySearchTree {
             }
         }
     }
+
     find(value){
         if(this.root === null) return false;
         let current = this.root
@@ -50,10 +52,13 @@ class BinarySearchTree {
         if(!found) return undefined;
         return current;
     }
+
     contains(value){
         if(this.root === null) return false;
+
         let current = this.root
         let found = false;
+
         while(current && !found){
             if(value < current.value){
                 current = current.left;
@@ -63,12 +68,14 @@ class BinarySearchTree {
                 return true;
             }
         }
+
         return false;
     }
     breadthFirstSearch(){
-        let node = this.root,
-            data = [],
-            queue = [];
+        let node = this.root
+        const data = []
+        const queue = [];
+
         queue.push(node);
 
         while(queue.length){
@@ -77,6 +84,48 @@ class BinarySearchTree {
             if(node.left) queue.push(node.left);
             if(node.right) queue.push(node.right);
         }
+        return data;
+    }
+
+    DFSPreOrder(){
+        const data = [];
+
+        function traverse(node){
+            data.push(node.value);
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+        }
+
+        traverse(this.root);
+
+        return data;
+    }
+
+    DFSPostOrder(){
+        const data = [];
+
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            data.push(node.value);
+        }
+
+        traverse(this.root);
+
+        return data;
+    }
+
+    DFSInOrder(){
+        const data = [];
+
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            data.push(node.value);
+            if(node.right) traverse(node.right);
+        }
+
+        traverse(this.root);
+
         return data;
     }
 }
