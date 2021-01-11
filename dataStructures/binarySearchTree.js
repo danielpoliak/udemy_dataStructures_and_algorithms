@@ -11,12 +11,12 @@ class BinarySearchTree {
         this.root = null;
     }
     insert(value){a
-        var newNode = new Node(value);
+        const newNode = new Node(value);
         if(this.root === null){
             this.root = newNode;
             return this;
         }
-        var current = this.root;
+        let current = this.root;
         while(true){
             if(value === current.value) return undefined;
             if(value < current.value){
@@ -36,8 +36,8 @@ class BinarySearchTree {
     }
     find(value){
         if(this.root === null) return false;
-        var current = this.root,
-            found = false;
+        let current = this.root
+        let found = false;
         while(current && !found){
             if(value < current.value){
                 current = current.left;
@@ -52,8 +52,8 @@ class BinarySearchTree {
     }
     contains(value){
         if(this.root === null) return false;
-        var current = this.root,
-            found = false;
+        let current = this.root
+        let found = false;
         while(current && !found){
             if(value < current.value){
                 current = current.left;
@@ -64,5 +64,19 @@ class BinarySearchTree {
             }
         }
         return false;
+    }
+    breadthFirstSearch(){
+        let node = this.root,
+            data = [],
+            queue = [];
+        queue.push(node);
+
+        while(queue.length){
+            node = queue.shift();
+            data.push(node.value);
+            if(node.left) queue.push(node.left);
+            if(node.right) queue.push(node.right);
+        }
+        return data;
     }
 }
